@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/sco.js/1.1.0/css/sco.message.min.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+    <link href="SpryAssets/SpryTabbedPanels.css" rel="stylesheet" type="text/css">
+    <script src="SpryAssets/SpryTabbedPanels.js" type="text/javascript"></script>
+    <script>window.t_debug=true;</script>
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/sco.js/1.1.0/js/sco.message.min.js"></script>
+    <script src="https://www.twesix.cn/lib/xiaoyu/xiaoyu.js"></script>
+    <script src="https://www.twesix.cn/user/bar/login.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/release_class.js"></script>
+    <script src="js/notes.js"></script>
+    <script src="js/app.js"></script>
+    
+
+    <title>YOYO</title>
+</head>
+<body>
+<script src="https://www.twesix.cn/user/bar/bar.js"></script>
+
+<div id="app" class="container">
+    <h1 id="app_header">YOYO笔记</h1>
+    <br>
+    <ul class="nav nav-pills" id="app_nav">
+        <li role="presentation" class="app-nav-item active" data-item_name="#profile_notes" id="nav_notes">
+            <a href="#nav_notes">我的笔记</a>
+        </li>
+        <li role="presentation" class="app-nav-item active" data-item_name="#profile_settings" id="nav_settings">
+            <a href="#nav_settings">个人设置</a>
+        </li>
+        <li role="presentation" class="app-nav-item" data-item_name="#profile_release" id="nav_release">
+            <a href="#nav_release">发布课程</a>
+        </li>
+        <li role="presentation" class="app-nav-item" data-item_name="#profile_share" id="nav_share">
+            <a href="#nav_share">笔记分享</a>
+        </li>
+        <li role="presentation" class="app-nav-item" data-item_name="#profile_feedback" id="nav_feedback">
+            <a href="#nav_feedback">意见反馈</a>
+        </li>
+    </ul>
+    <br><hr><br>
+    <div id="profile-items">
+        <div class="row profile-item active" id="profile_notes">
+            <h3>我的笔记列表</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="info">
+                    <td>课程名称</td>
+                    <td>发布时间</td>
+                    <td>发布地点</td>
+                    <td>发布人</td>
+                    <td>查看笔记</td>
+                    <td>分享</td>
+                    <td>删除</td>
+                </tr>
+                </thead>
+                <tbody id="notes">
+                <tr id="note_template">
+                    <td>课程名称</td>
+                    <td>发布时间</td>
+                    <td>发布地点</td>
+                    <td>发布人</td>
+                    <td><button class="btn btn-default">查看笔记</button></td>
+                    <td><button class="btn btn-default">分享给他人</button></td>
+                    <td><button class="btn btn-default">删除</button></td>
+                </tr>
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+            <br><br>
+            <p>信息在不同的平台间可能存在时间延迟，如果您发现信息不一致，请多刷新几次试试 ！</p>
+        </div>
+        
+        
+        
+        <div class="row profile-item active" id="profile_settings">
+        
+		<div class="personPic">
+            <img src="#" width="130px" height="130px">
+			
+  
+           
+	  </div>
+					
+        
+        <form >
+        <h>个人信息</h>
+		<div class="form-group">
+            <label>昵称</label>
+	      <input type="text" class="form-control"  placeholder=" 昵称" />
+		</div>
+        <div class="form-group">
+		  <label>位置</label>
+		  <input type="text" class="form-control"  placeholder="你的位置" />
+		</div>
+		<div class="form-group">
+		  <label>学校</label>
+		  <input type="text" class="form-control"  placeholder="你的学校" />
+		</div>
+        <hr />
+		<h>个人简述</h>
+		<div class="form-group">
+		  <label></label>
+          <textarea class="form-control" rows="5" placeholder="介绍一下自己吧 "></textarea>
+        </div>
+		<hr />
+		<div >
+		  <button type="submit" class="btn btn-primary">确认</button>
+			<button type="reset" class="btn btn-default">重置</button>
+		</div>
+        </form>							
+				
+                
+                				
+        </div>
+        <div class="row profile-item" id="profile_release">
+            <div class="col-sm-10 col-sm-offset-1">
+                <h3 class="center-block">欢迎发布新课程</h3>
+                <br>
+                <form role="form" enctype="multipart/form-data" action="release_class.php" id="release_class" method="post">
+                    <div class="form-group">
+                        <label for="class_name">课程名称</label>
+                        <input name="class_name" type="text" id="class_name" class="form-control" required>
+                        <b class="text-success" style="visibility: hidden">恭喜，课程名可用</b>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="class_location">课程所在地（所在学校名称）</label>
+                        <input name="class_location" type="text" id="class_location" class="form-control" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="releaser_name">发布人</label>
+                        <input name="releaser_name" type="text" id="releaser_name" class="form-control" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="class_file">课程对应的PPT文件</label>
+                        <input name="class_file" type="file" id="class_file" class="form-control" required>
+                    </div>
+                    <br><br><br>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button type="submit" id="class_submit" class="btn-success form-control">发布</button>
+                        </div>
+                        <div class="col-sm-6">
+                            <button type="reset" class="btn-danger form-control">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row profile-item" id="profile_share">
+          <div id="TabbedPanels1" class="TabbedPanels">
+            <ul class="TabbedPanelsTabGroup">
+    <li class="TabbedPanelsTab" tabindex="0">
+      <h3 class="text-info">我分享的笔记</h3>
+    </li>
+    <li class="TabbedPanelsTab" tabindex="0">
+      <h3 class="text-info">别人分享记的笔记</h3>
+    </li>
+  </ul>
+  <div class="TabbedPanelsContentGroup">
+    <div class="TabbedPanelsContent">
+      <p>&nbsp;</p>
+      <table width="100%" border="0" class="btn-primary">
+        <tr>
+          <td><h4>名称</h4></td>
+          <td><h4>时间</h4></td>
+          <td><h4>地点</h4></td>
+          <td><h4>查看</h4></td>
+          <td><h4>删除</h4></td>
+        </tr>
+      </table>
+      <table id="mysharing" width="100%" border="0">
+        <tr>
+          <td width="20%">名称</td>
+          <td width="20%">时间</td>
+          <td width="20%">地点</td>
+          <td width="20%"><button class="btn btn-default">查看</button></td>
+          <td width="20%"><button class="btn btn-default">删除</button></td>
+        </tr>
+      </table>
+      
+      <p>&nbsp;</p>
+      
+    </div>
+    <div class="TabbedPanelsContent">
+      <p>&nbsp;</p>
+      <table width="100%" border="0" class="bg-primary">
+        <tr>
+          <td><h4>名称</h4></td>
+          <td><h4>时间</h4></td>
+          <td><h4>地点</h4></td>
+          <td><h4>分享人</h4></td>
+          <td><h4>查看</h4></td>
+         
+        </tr>
+      </table>
+  </div>
+  </div>
+</div>
+<h1>&nbsp;</h1>
+        </div>
+        <div class="row profile-item" id="profile_feedback">
+            <br><br>
+            <div class="center-block" id="contact_info">
+                <h2>我的联系方式</h2>
+                <br><br>
+                手机 :  18671038230
+                <br><br>
+                QQ :  278227739
+                <br><br>
+                微信 :  twesix
+                <br><br>
+                Email :  <a href="mailto://twesix@aliyun.com">twesix@aliyun.com</a>
+                <br><br>
+                github :  <a href="https://github.com/twesix" target="_blank">twesix</a>
+                <br><br>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br><br>
+<hr>
+<br><br><br><br>
+<h4 class="yoyo-loves-you">yoyo loves you</h4>
+<br><br><br><br>
+<div class="modal fade" id="note_detail">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    笔记内容
+                </h4>
+            </div>
+            <div class="modal-body" id="note_content">
+
+
+
+          </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-primary">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
+</script>
+</body>
+</html>

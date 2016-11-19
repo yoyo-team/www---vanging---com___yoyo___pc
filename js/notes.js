@@ -1,0 +1,235 @@
+function fetch_notes()
+{
+    var notes=
+            [
+                {
+                    id:123456789,
+                    name:'高等数学A',
+                    time:"2016年10月4日",
+                    location:"吉林大学",
+                    releaser:"孟老师",
+                },
+                {
+                    id:123456789,
+                    name:'微型计算机技术及应用',
+                    time:"2016年10月4日",
+                    location:"吉林大学",
+                    releaser:"孟老师",
+                },
+                {
+                    id:123456789,
+                    name:'计算机系统结构',
+                    time:"2016年10月4日",
+                    location:"吉林大学",
+                    releaser:"孟老师",
+                },
+                {
+                    id:123456789,
+                    name:'计算机组成原理',
+                    time:"2016年10月4日",
+                    location:"吉林大学",
+                    releaser:"孟老师",
+                },
+                {
+                    id:123456789,
+                    name:'高等数学A',
+                    time:"2016年10月4日",
+                    location:"吉林大学",
+                    releaser:"孟老师",
+                },
+                {
+                    id:123456789,
+                    name:'微型计算机技术及应用',
+                    time:"2016年10月4日",
+                    location:"吉林大学",
+                    releaser:"孟老师",
+                },
+                {
+                    id:123456789,
+                    name:'计算机系统结构',
+                    time:"2016年10月4日",
+                    location:"吉林大学",
+                    releaser:"孟老师",
+                },
+                {
+                    id:123456789,
+                    name:'计算机组成原理',
+                    time:"2016年10月4日",
+                    location:"吉林大学",
+                    releaser:"孟老师",
+                },
+                {
+                    id:123456789,
+                    name:'高等数学A',
+                    time:"2016年10月4日",
+                    location:"吉林大学",
+                    releaser:"孟老师",
+                },
+                {
+                    id:123456789,
+                    name:'微型计算机技术及应用',
+                    time:"2016年10月4日",
+                    location:"吉林大学",
+                    releaser:"孟老师",
+                },
+                {
+                    id:123456789,
+                    name:'计算机系统结构',
+                    time:"2016年10月4日",
+                    location:"吉林大学",
+                    releaser:"孟老师",
+                },
+                {
+                    id:123456789,
+                    name:'计算机组成原理',
+                    time:"2016年10月4日",
+                    location:"吉林大学",
+                    releaser:"孟老师",
+                },
+                {
+                    id:123456789,
+                    name:'高等数学A',
+                    time:"2016年10月4日",
+                    location:"吉林大学",
+                    releaser:"孟老师",
+                },
+                {
+                    id:123456789,
+                    name:'微型计算机技术及应用',
+                    time:"2016年10月4日",
+                    location:"吉林大学",
+                    releaser:"孟老师",
+                },
+                {
+                    id:123456789,
+                    name:'计算机系统结构',
+                    time:"2016年10月4日",
+                    location:"吉林大学",
+                    releaser:"孟老师",
+                },
+                {
+                    id:123456789,
+                    name:'计算机组成原理',
+                    time:"2016年10月4日",
+                    location:"吉林大学",
+                    releaser:"孟老师",
+                },
+            ]
+        ;
+    return new Promise(function(resolve,reject)
+    {
+        resolve(notes);
+    });
+}
+
+function display_notes()
+{
+    fetch_notes()
+        .then(function(notes)
+        {
+            var $tpl=$("#note_template");
+            var $children=$tpl.children();
+            var $temp=$($($children[4]).children()[0]);
+            $temp.click(function(event)
+            {
+                var $tr=$('tr').has(event.target);
+                $.get('https://nodejs.twesix.cn/yoyo/note/get_content?id='+$tr.data('note-id'))
+                    .done(function(res)
+                    {
+                        if(res.ok)
+                        {
+                            $("#note_detail").modal();
+                        }
+                        else
+                        {
+                            $("#note_detail").modal();
+                            console.log(res.err);
+                        }
+
+                    })
+                    .fail(function(err)
+                    {
+                        console.log(err);
+                    })
+                ;
+            });
+            $temp=$($($children[5]).children()[0]);
+            $temp.click(function(event)
+            {
+                console.log('share');
+                var $tr=$('tr').has(event.target);
+                console.log($tr.data('note-id'));
+                $.get('https://nodejs.twesix.cn/yoyo/note/share')
+                    .done(function(res)
+                    {
+                        if(res.ok)
+                        {
+                            success_message('笔记分享成功，别人现在可以看到你分享的笔记了');
+                        }
+                        else
+                        {
+                            success_message('笔记分享成功，别人现在可以看到你分享的笔记了');
+                            console.log(res.err);
+                        }
+
+                    })
+                    .fail(function(err)
+                    {
+                        console.log(err);
+                    })
+                ;
+            });
+            $temp=$($($children[6]).children()[0]);
+            $temp.click(function(event)
+            {
+                if(!confirm('你确定要删除这篇笔记吗？\n删除后不可恢复 ！'))
+                {
+                    return ;
+                }
+                var $tr=$('tr').has(event.target);
+                console.log($tr.data('note-id'));
+                $.get('https://nodejs.twesix.cn/yoyo/note/remove')
+                    .done(function(res)
+                    {
+                        if(res.ok)
+                        {
+                            $tr.addClass('danger');
+                            $tr.fadeOut(500);
+                            setTimeout(function()
+                            {
+                                $tr.remove();
+                            },500);
+                        }
+                        else
+                        {
+                            console.log(res.err);
+                        }
+
+                    })
+                    .fail(function(err)
+                    {
+                        console.log(err);
+                    })
+                ;
+
+            });
+            notes.forEach(function(note)
+            {
+                var $note=$tpl.clone(true);
+                $note.removeAttr('id');
+                $note.attr('data-note-id',note.id);
+                var $children=$note.children();
+
+                $children[0].innerHTML=note.name;
+                $children[1].innerHTML=note.time;
+                $children[2].innerHTML=note.location;
+                $children[3].innerHTML=note.releaser;
+
+                $("#notes").append($note);
+            })
+        },function()
+        {
+            error_message('获取笔记列表失败，请刷新重试');
+        })
+    ;
+}
