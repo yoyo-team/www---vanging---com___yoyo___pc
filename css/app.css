@@ -1,3 +1,9 @@
+html,
+body
+{
+    font-family:微软雅黑,"Helvetica Neue",Helvetica,Arial,sans-serif !important;
+}
+
 .center-block
 {
     text-align:center;

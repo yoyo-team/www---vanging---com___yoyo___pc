@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/global.css" rel="stylesheet">
+
+    <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="//luoc.co/sdks/navbar/index.js"></script>
+
+    <title>落尘科技</title>
+</head>
+<body>
+<div id="navbar">
+    <navbar></navbar>
+    <modal_for_login></modal_for_login>
+    <modal_for_register></modal_for_register>
+    <modal_for_change_password></modal_for_change_password>
+</div>
+
+<div id="app" class="container">
+    <h1 id="app_header">YOYO笔记</h1>
+    <br>
+    <yoyo-nav></yoyo-nav>
+    <hr>
+    <yoyo-panels></yoyo-panels>
+</div>
+
+<script src="//cdn.bootcss.com/vue/2.1.8/vue.js"></script>
+
+<script src="//luoc.co/navbar/components.js"></script>
+
+<script src="index.js" id="navbar_loader"></script>
+
+
+
+
+</body>
+</html>
