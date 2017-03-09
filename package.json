@@ -1,0 +1,10 @@
+{
+  "name": "navbar",
+  "version": "0.0.1",
+  "dependencies": {
+    "css-loader": "^0.26.1",
+    "vue-loader": "^11.0.0",
+    "vue-template-loader": "^0.2.2",
+    "webpack": "^1.14.0"
+  }
+}
