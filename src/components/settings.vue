@@ -4,8 +4,8 @@
             <form @submit.prevent="submit($event)">
                 <br>
                 <div class="form-group">
-                    <label>学校</label>
-                    <input v-model="location" type="text" class="form-control"  placeholder="你的学校" required />
+                    <label>位置</label>
+                    <input v-model="location" type="text" class="form-control"  placeholder="你的位置" required />
                 </div>
                 <br>
                 <br>

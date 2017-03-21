@@ -44,7 +44,6 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var navbar=new Vue({el:'#navbar'});
 	var app=new Vue
 	(
 	    {
@@ -834,7 +833,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 	// exports
 
@@ -871,11 +870,98 @@
 	//
 	//
 	//
-	//
-	//
 
 	module.exports =
 	    {
+	        data:function()
+	        {
+	            return {
+	                notes:{}
+	            };
+	        },
+	        mounted:function()
+	        {
+	            var self=this;
+
+	            // get class
+	            document.body.addEventListener('yoyo:get_class:ok',function(e)
+	            {
+	                Vue.set
+	                (
+	                    self.notes[e.message.cid],
+	                    'source',
+	                    e.message
+	                );
+	            });
+	            document.body.addEventListener('yoyo:get_class:error',function(e)
+	            {
+	                console.log('课程加载失败');
+	                console.log(e.message);
+	            });
+
+	            // get notes
+	            document.body.addEventListener('yoyo:get_notes:ok',function(e)
+	            {
+	                self.notes={};
+	                e.message.forEach(function(e)
+	                {
+	                    Vue.set
+	                    (
+	                        self.notes,
+	                        e.cid,
+	                        {
+	                            segments:e.segments,
+	                            source:
+	                                {
+	                                    cid:'',
+	                                    meta:{},
+	                                    segments:[]
+	                                }
+	                        }
+	                    );
+	                    window.luoc.yoyo.get_class({cid:e.cid})
+	                });
+	            });
+	            document.body.addEventListener('yoyo:get_notes:error',function(e)
+	            {
+	                alert('刷新笔记列表失败，请检查网络环境');
+	            });
+
+	            // delete note
+	            document.body.addEventListener('yoyo:delete_note:ok',function()
+	            {
+	                self.refresh();
+	            })
+	        },
+	        methods:
+	            {
+	                refresh:function(e)
+	                {
+	                    if(window.luoc.navbar.online)
+	                    {
+	                        window.luoc.yoyo.get_notes
+	                        (
+	                            {
+	                                uid:window.luoc.navbar.data.uid
+	                            }
+	                        );
+	                    }
+	                    else
+	                    {
+	                        alert('您没有登录');
+	                    }
+	                },
+	                delete_note:function(cid)
+	                {
+	                    window.luoc.yoyo.delete_note
+	                    (
+	                        {
+	                            uid:window.luoc.navbar.data.uid,
+	                            cid:cid
+	                        }
+	                    );
+	                }
+	            }
 	    }
 
 
@@ -886,29 +972,37 @@
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
 	  return _c('div', {
 	    staticClass: "row profile-item"
-	  }, [_c('h3', [_vm._v("我的笔记列表")]), _vm._v(" "), _c('table', {
-	    staticClass: "table table-bordered table-hover"
-	  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('tfoot')], 1)])
-	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('thead', [_c('tr', {
-	    staticClass: "info"
-	  }, [_c('td', [_vm._v("课程名称")]), _vm._v(" "), _c('td', [_vm._v("发布时间")]), _vm._v(" "), _c('td', [_vm._v("发布地点")]), _vm._v(" "), _c('td', [_vm._v("发布人")]), _vm._v(" "), _c('td', [_vm._v("查看笔记")]), _vm._v(" "), _c('td', [_vm._v("分享")]), _vm._v(" "), _c('td', [_vm._v("删除")])])])
-	},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('tbody', {
+	  }, [_c('h3', [_vm._v("我的笔记列表")]), _vm._v(" "), _c('br'), _vm._v(" "), _c('button', {
+	    staticClass: "btn btn-default",
+	    on: {
+	      "click": function($event) {
+	        _vm.refresh($event)
+	      }
+	    }
+	  }, [_vm._v("刷新")]), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('table', {
+	    staticClass: "table table-bordered"
+	  }, [_vm._m(0), _vm._v(" "), _c('tbody', {
 	    attrs: {
 	      "id": "notes"
 	    }
-	  }, [_c('tr', {
-	    attrs: {
-	      "id": "note_template"
-	    }
-	  }, [_c('td', [_vm._v("课程名称")]), _vm._v(" "), _c('td', [_vm._v("发布时间")]), _vm._v(" "), _c('td', [_vm._v("发布地点")]), _vm._v(" "), _c('td', [_vm._v("发布人")]), _vm._v(" "), _c('td', [_c('button', {
-	    staticClass: "btn btn-default"
-	  }, [_vm._v("查看笔记")])]), _vm._v(" "), _c('td', [_c('button', {
-	    staticClass: "btn btn-default"
-	  }, [_vm._v("分享给他人")])]), _vm._v(" "), _c('td', [_c('button', {
-	    staticClass: "btn btn-default"
-	  }, [_vm._v("删除")])])])])
+	  }, _vm._l((_vm.notes), function(note, cid) {
+	    return _c('tr', {
+	      attrs: {
+	        "id": "note_template"
+	      }
+	    }, [_c('td', [_vm._v(_vm._s(note.source.meta.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(note.source.meta.location))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(note.source.meta.releaser))]), _vm._v(" "), _c('td', [_c('button', {
+	      staticClass: "btn btn-danger",
+	      on: {
+	        "click": function($event) {
+	          _vm.delete_note(cid)
+	        }
+	      }
+	    }, [_vm._v("删除")])])])
+	  })), _vm._v(" "), _c('tfoot')], 1)])
+	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('thead', [_c('tr', {
+	    staticClass: "info"
+	  }, [_c('td', [_vm._v("课程名称")]), _vm._v(" "), _c('td', [_vm._v("地点")]), _vm._v(" "), _c('td', [_vm._v("发布人")]), _vm._v(" "), _c('td', [_vm._v("删除")])])])
 	}]}
 	module.exports.render._withStripped = true
 	if (false) {
@@ -991,7 +1085,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 	// exports
 
@@ -1028,15 +1122,28 @@
 	    {
 	        data: function () {
 	            return {
-	                school:''
+	                location:''
 	            };
 	        },
-	        components: {},
 	        methods:
 	            {
 	                submit:function(e)
 	                {
 	                    console.log(e);
+	                    if(window.luoc.navbar.online)
+	                    {
+	                        window.luoc.yoyo.set_location
+	                        (
+	                            {
+	                                uid:window.luoc.navbar.data.uid,
+	                                location:this.location
+	                            }
+	                        );
+	                    }
+	                    else
+	                    {
+	                        alert('请登录');
+	                    }
 	                }
 	            }
 	    }
@@ -1060,25 +1167,26 @@
 	    }
 	  }, [_c('br'), _vm._v(" "), _c('div', {
 	    staticClass: "form-group"
-	  }, [_c('label', [_vm._v("学校")]), _vm._v(" "), _c('input', {
+	  }, [_c('label', [_vm._v("位置")]), _vm._v(" "), _c('input', {
 	    directives: [{
 	      name: "model",
 	      rawName: "v-model",
-	      value: (_vm.school),
-	      expression: "school"
+	      value: (_vm.location),
+	      expression: "location"
 	    }],
 	    staticClass: "form-control",
 	    attrs: {
 	      "type": "text",
-	      "placeholder": "你的学校"
+	      "placeholder": "你的位置",
+	      "required": ""
 	    },
 	    domProps: {
-	      "value": _vm._s(_vm.school)
+	      "value": _vm._s(_vm.location)
 	    },
 	    on: {
 	      "input": function($event) {
 	        if ($event.target.composing) { return; }
-	        _vm.school = $event.target.value
+	        _vm.location = $event.target.value
 	      }
 	    }
 	  })]), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(0)])])])
@@ -1093,7 +1201,7 @@
 	      "type": "submit",
 	      "id": "class_submit"
 	    }
-	  }, [_vm._v("发布")])]), _vm._v(" "), _c('div', {
+	  }, [_vm._v("确定")])]), _vm._v(" "), _c('div', {
 	    staticClass: "col-sm-6"
 	  }, [_c('button', {
 	    staticClass: "btn-danger form-control",
@@ -1183,7 +1291,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 	// exports
 
@@ -1230,25 +1338,34 @@
 	//
 	//
 	//
-	//
 
 	module.exports =
 	    {
-	        data: function () {
-	            return {
-	                name:'',
-	                location:'',
-	                releaser:'',
-	                file:document.getElementById('class_file')
-	            };
-	        },
 	        methods:
 	            {
 	                submit:function(e)
 	                {
-	                    console.log(e);
+	                    window.luoc.yoyo.release(document.getElementById('class_form'));
 	                }
-	            }
+	            },
+	        mounted:function()
+	        {
+	            document.body.addEventListener('yoyo:release:args_check_failed',function(e)
+	            {
+	                console.log(e);
+	            });
+	            document.body.addEventListener('yoyo:release:error',function(e)
+	            {
+	                console.log(e);
+	                alert('发布课程失败');
+	            });
+	            document.body.addEventListener('yoyo:release:ok',function(e)
+	            {
+	                console.log(e);
+	                alert('发布课程成功');
+	                document.getElementById('class_form').reset();
+	            });
+	        }
 	    }
 
 
@@ -1275,95 +1392,56 @@
 	        _vm.submit($event)
 	      }
 	    }
-	  }, [_c('div', {
+	  }, [_vm._m(0), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(3), _vm._v(" "), _c('br'), _c('br'), _c('br'), _vm._v(" "), _vm._m(4)])])])
+	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div', {
 	    staticClass: "form-group"
 	  }, [_c('label', {
 	    attrs: {
 	      "for": "class_name"
 	    }
 	  }, [_vm._v("课程名称")]), _vm._v(" "), _c('input', {
-	    directives: [{
-	      name: "model",
-	      rawName: "v-model",
-	      value: (_vm.name),
-	      expression: "name"
-	    }],
 	    staticClass: "form-control",
 	    attrs: {
-	      "name": "class_name",
+	      "name": "name",
 	      "type": "text",
 	      "id": "class_name",
 	      "required": ""
-	    },
-	    domProps: {
-	      "value": _vm._s(_vm.name)
-	    },
-	    on: {
-	      "input": function($event) {
-	        if ($event.target.composing) { return; }
-	        _vm.name = $event.target.value
-	      }
 	    }
-	  })]), _vm._v(" "), _c('br'), _vm._v(" "), _c('div', {
+	  })])
+	},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div', {
 	    staticClass: "form-group"
 	  }, [_c('label', {
 	    attrs: {
 	      "for": "class_location"
 	    }
 	  }, [_vm._v("课程所在地（所在学校名称）")]), _vm._v(" "), _c('input', {
-	    directives: [{
-	      name: "model",
-	      rawName: "v-model",
-	      value: (_vm.location),
-	      expression: "location"
-	    }],
 	    staticClass: "form-control",
 	    attrs: {
-	      "name": "class_location",
+	      "name": "location",
 	      "type": "text",
 	      "id": "class_location",
 	      "required": ""
-	    },
-	    domProps: {
-	      "value": _vm._s(_vm.location)
-	    },
-	    on: {
-	      "input": function($event) {
-	        if ($event.target.composing) { return; }
-	        _vm.location = $event.target.value
-	      }
 	    }
-	  })]), _vm._v(" "), _c('br'), _vm._v(" "), _c('div', {
+	  })])
+	},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div', {
 	    staticClass: "form-group"
 	  }, [_c('label', {
 	    attrs: {
 	      "for": "releaser_name"
 	    }
 	  }, [_vm._v("发布人")]), _vm._v(" "), _c('input', {
-	    directives: [{
-	      name: "model",
-	      rawName: "v-model",
-	      value: (_vm.releaser),
-	      expression: "releaser"
-	    }],
 	    staticClass: "form-control",
 	    attrs: {
-	      "name": "releaser_name",
+	      "name": "releaser",
 	      "type": "text",
 	      "id": "releaser_name",
 	      "required": ""
-	    },
-	    domProps: {
-	      "value": _vm._s(_vm.releaser)
-	    },
-	    on: {
-	      "input": function($event) {
-	        if ($event.target.composing) { return; }
-	        _vm.releaser = $event.target.value
-	      }
 	    }
-	  })]), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('br'), _c('br'), _c('br'), _vm._v(" "), _vm._m(1)])])])
-	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  })])
+	},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
 	  return _c('div', {
 	    staticClass: "form-group"
 	  }, [_c('label', {
@@ -1373,7 +1451,7 @@
 	  }, [_vm._v("课程对应的PPT文件")]), _vm._v(" "), _c('input', {
 	    staticClass: "form-control",
 	    attrs: {
-	      "name": "class_file",
+	      "name": "file",
 	      "type": "file",
 	      "id": "class_file",
 	      "required": ""

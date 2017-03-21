@@ -1167,7 +1167,7 @@
 	    }
 	  }, [_c('br'), _vm._v(" "), _c('div', {
 	    staticClass: "form-group"
-	  }, [_c('label', [_vm._v("学校")]), _vm._v(" "), _c('input', {
+	  }, [_c('label', [_vm._v("位置")]), _vm._v(" "), _c('input', {
 	    directives: [{
 	      name: "model",
 	      rawName: "v-model",
@@ -1177,7 +1177,7 @@
 	    staticClass: "form-control",
 	    attrs: {
 	      "type": "text",
-	      "placeholder": "你的学校",
+	      "placeholder": "你的位置",
 	      "required": ""
 	    },
 	    domProps: {
