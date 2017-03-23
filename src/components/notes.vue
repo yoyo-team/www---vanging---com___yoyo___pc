@@ -1,29 +1,31 @@
 <template>
     <div class="row profile-item">
-        <h3>我的笔记列表</h3>
-        <br>
-        <button @click="refresh($event)" class="btn btn-default">刷新</button>
-        <br>
-        <br>
-        <table class="table table-bordered">
-            <thead>
-            <tr class="info">
-                <td>课程名称</td>
-                <td>地点</td>
-                <td>发布人</td>
-                <td>删除</td>
-            </tr>
-            </thead>
-            <tbody id="notes">
-            <tr id="note_template" v-for="(note,cid) in notes">
-                <td>{{note.source.meta.name}}</td>
-                <td>{{note.source.meta.location}}</td>
-                <td>{{note.source.meta.releaser}}</td>
-                <td><button class="btn btn-danger" @click="delete_note(cid)">删除</button></td>
-            </tr>
-            </tbody>
-            <tfoot></tfoot>
-        </table>
+        <div class="col-sm-10 col-sm-offset-1">
+            <h3>我的笔记列表</h3>
+            <br>
+            <button @click="refresh($event)" class="btn btn-default">刷新</button>
+            <br>
+            <br>
+            <table class="table table-bordered">
+                <thead>
+                <tr class="info">
+                    <td>课程名称</td>
+                    <td>地点</td>
+                    <td>发布人</td>
+                    <td>删除</td>
+                </tr>
+                </thead>
+                <tbody id="notes">
+                <tr id="note_template" v-for="(note,cid) in notes">
+                    <td>{{note.source.meta.name}}</td>
+                    <td>{{note.source.meta.location}}</td>
+                    <td>{{note.source.meta.releaser}}</td>
+                    <td><button class="btn btn-danger" @click="delete_note(cid)">删除</button></td>
+                </tr>
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
     </div>
 </template>
 <script>

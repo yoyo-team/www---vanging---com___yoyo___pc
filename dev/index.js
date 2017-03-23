@@ -47,12 +47,9 @@
 	var app=new Vue
 	(
 	    {
-	        el:'#app',
-	        components:
-	            {
-	                'yoyo-nav':__webpack_require__(1),
-	                'yoyo-panels':__webpack_require__(10)
-	            }
+	        el : '#luoc__yoyo',
+	        template : '<wrapper></wrapper>',
+	        components : { wrapper : __webpack_require__(1) }
 	    }
 	);
 
@@ -68,15 +65,15 @@
 	  /* script */
 	  __webpack_require__(8),
 	  /* template */
-	  __webpack_require__(9),
+	  __webpack_require__(39),
 	  /* scopeId */
-	  "data-v-4ee0bb14",
+	  "data-v-03fc0471",
 	  /* cssModules */
 	  null
 	)
-	Component.options.__file = "I:\\学习与工作\\大创项目\\yoyo\\yoyo-loves-you\\src\\components\\nav.vue"
+	Component.options.__file = "I:\\学习与工作\\大创项目\\yoyo\\yoyo-web\\src\\components\\app.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-	if (Component.options.functional) {console.error("[vue-loader] nav.vue: functional components are not supported with templates, they should use render functions.")}
+	if (Component.options.functional) {console.error("[vue-loader] app.vue: functional components are not supported with templates, they should use render functions.")}
 
 	/* hot reload */
 	if (false) {(function () {
@@ -85,9 +82,9 @@
 	  if (!hotAPI.compatible) return
 	  module.hot.accept()
 	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-4ee0bb14", Component.options)
+	    hotAPI.createRecord("data-v-03fc0471", Component.options)
 	  } else {
-	    hotAPI.reload("data-v-4ee0bb14", Component.options)
+	    hotAPI.reload("data-v-03fc0471", Component.options)
 	  }
 	})()}
 
@@ -105,13 +102,13 @@
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	if(content.locals) module.exports = content.locals;
 	// add the styles to the DOM
-	var update = __webpack_require__(5)("481ea3d2", content, false);
+	var update = __webpack_require__(5)("62664410", content, false);
 	// Hot Module Replacement
 	if(false) {
 	 // When the styles change, update the <style> tags
 	 if(!content.locals) {
-	   module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-4ee0bb14\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./nav.vue", function() {
-	     var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-4ee0bb14\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./nav.vue");
+	   module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-03fc0471\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./app.vue", function() {
+	     var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-03fc0471\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./app.vue");
 	     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 	     update(newContent);
 	   });
@@ -129,7 +126,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 	// exports
 
@@ -514,6 +511,111 @@
 
 /***/ },
 /* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+
+	module.exports =
+	    {
+	        data: function () {
+	            return {};
+	        },
+	        components:
+	            {
+	                'yoyo-nav':__webpack_require__(9),
+	                'yoyo-panels':__webpack_require__(14)
+	            }
+	    }
+
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	/* styles */
+	__webpack_require__(10)
+
+	var Component = __webpack_require__(7)(
+	  /* script */
+	  __webpack_require__(12),
+	  /* template */
+	  __webpack_require__(13),
+	  /* scopeId */
+	  "data-v-cb2e3b1a",
+	  /* cssModules */
+	  null
+	)
+	Component.options.__file = "I:\\学习与工作\\大创项目\\yoyo\\yoyo-web\\src\\components\\nav.vue"
+	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+	if (Component.options.functional) {console.error("[vue-loader] nav.vue: functional components are not supported with templates, they should use render functions.")}
+
+	/* hot reload */
+	if (false) {(function () {
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  module.hot.accept()
+	  if (!module.hot.data) {
+	    hotAPI.createRecord("data-v-cb2e3b1a", Component.options)
+	  } else {
+	    hotAPI.reload("data-v-cb2e3b1a", Component.options)
+	  }
+	})()}
+
+	module.exports = Component.exports
+
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(11);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	if(content.locals) module.exports = content.locals;
+	// add the styles to the DOM
+	var update = __webpack_require__(5)("45063b09", content, false);
+	// Hot Module Replacement
+	if(false) {
+	 // When the styles change, update the <style> tags
+	 if(!content.locals) {
+	   module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-cb2e3b1a\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./nav.vue", function() {
+	     var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-cb2e3b1a\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./nav.vue");
+	     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+	     update(newContent);
+	   });
+	 }
+	 // When the module is disposed, remove the <style> tags
+	 module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(4)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 12 */
 /***/ function(module, exports) {
 
 	//
@@ -564,7 +666,7 @@
 
 
 /***/ },
-/* 9 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -635,29 +737,29 @@
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-	     require("vue-hot-reload-api").rerender("data-v-4ee0bb14", module.exports)
+	     require("vue-hot-reload-api").rerender("data-v-cb2e3b1a", module.exports)
 	  }
 	}
 
 /***/ },
-/* 10 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 	/* styles */
-	__webpack_require__(11)
+	__webpack_require__(15)
 
 	var Component = __webpack_require__(7)(
 	  /* script */
-	  __webpack_require__(13),
+	  __webpack_require__(17),
 	  /* template */
-	  __webpack_require__(34),
+	  __webpack_require__(38),
 	  /* scopeId */
-	  "data-v-0fe6d68e",
+	  "data-v-6d770262",
 	  /* cssModules */
 	  null
 	)
-	Component.options.__file = "I:\\学习与工作\\大创项目\\yoyo\\yoyo-loves-you\\src\\components\\panels.vue"
+	Component.options.__file = "I:\\学习与工作\\大创项目\\yoyo\\yoyo-web\\src\\components\\panels.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] panels.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -668,9 +770,9 @@
 	  if (!hotAPI.compatible) return
 	  module.hot.accept()
 	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-0fe6d68e", Component.options)
+	    hotAPI.createRecord("data-v-6d770262", Component.options)
 	  } else {
-	    hotAPI.reload("data-v-0fe6d68e", Component.options)
+	    hotAPI.reload("data-v-6d770262", Component.options)
 	  }
 	})()}
 
@@ -678,23 +780,23 @@
 
 
 /***/ },
-/* 11 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(12);
+	var content = __webpack_require__(16);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	if(content.locals) module.exports = content.locals;
 	// add the styles to the DOM
-	var update = __webpack_require__(5)("cbd96c38", content, false);
+	var update = __webpack_require__(5)("8f9db384", content, false);
 	// Hot Module Replacement
 	if(false) {
 	 // When the styles change, update the <style> tags
 	 if(!content.locals) {
-	   module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-0fe6d68e\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./panels.vue", function() {
-	     var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-0fe6d68e\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./panels.vue");
+	   module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-6d770262\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./panels.vue", function() {
+	     var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-6d770262\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./panels.vue");
 	     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 	     update(newContent);
 	   });
@@ -704,7 +806,7 @@
 	}
 
 /***/ },
-/* 12 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(4)();
@@ -718,7 +820,7 @@
 
 
 /***/ },
-/* 13 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//
@@ -752,33 +854,33 @@
 	        },
 	        components:
 	            {
-	                notes:__webpack_require__(14),
-	                settings:__webpack_require__(19),
-	                release:__webpack_require__(24),
-	                feedback:__webpack_require__(29)
+	                notes:__webpack_require__(18),
+	                settings:__webpack_require__(23),
+	                release:__webpack_require__(28),
+	                feedback:__webpack_require__(33)
 	            }
 	    }
 
 
 /***/ },
-/* 14 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 	/* styles */
-	__webpack_require__(15)
+	__webpack_require__(19)
 
 	var Component = __webpack_require__(7)(
 	  /* script */
-	  __webpack_require__(17),
+	  __webpack_require__(21),
 	  /* template */
-	  __webpack_require__(18),
+	  __webpack_require__(22),
 	  /* scopeId */
-	  "data-v-889ae11c",
+	  "data-v-45ce5b11",
 	  /* cssModules */
 	  null
 	)
-	Component.options.__file = "I:\\学习与工作\\大创项目\\yoyo\\yoyo-loves-you\\src\\components\\notes.vue"
+	Component.options.__file = "I:\\学习与工作\\大创项目\\yoyo\\yoyo-web\\src\\components\\notes.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] notes.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -789,9 +891,9 @@
 	  if (!hotAPI.compatible) return
 	  module.hot.accept()
 	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-889ae11c", Component.options)
+	    hotAPI.createRecord("data-v-45ce5b11", Component.options)
 	  } else {
-	    hotAPI.reload("data-v-889ae11c", Component.options)
+	    hotAPI.reload("data-v-45ce5b11", Component.options)
 	  }
 	})()}
 
@@ -799,23 +901,23 @@
 
 
 /***/ },
-/* 15 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(16);
+	var content = __webpack_require__(20);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	if(content.locals) module.exports = content.locals;
 	// add the styles to the DOM
-	var update = __webpack_require__(5)("4878afc0", content, false);
+	var update = __webpack_require__(5)("6a89230a", content, false);
 	// Hot Module Replacement
 	if(false) {
 	 // When the styles change, update the <style> tags
 	 if(!content.locals) {
-	   module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-889ae11c\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./notes.vue", function() {
-	     var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-889ae11c\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./notes.vue");
+	   module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-45ce5b11\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./notes.vue", function() {
+	     var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-45ce5b11\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./notes.vue");
 	     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 	     update(newContent);
 	   });
@@ -825,7 +927,7 @@
 	}
 
 /***/ },
-/* 16 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(4)();
@@ -839,7 +941,7 @@
 
 
 /***/ },
-/* 17 */
+/* 21 */
 /***/ function(module, exports) {
 
 	//
@@ -966,7 +1068,7 @@
 
 
 /***/ },
-/* 18 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1008,29 +1110,29 @@
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-	     require("vue-hot-reload-api").rerender("data-v-889ae11c", module.exports)
+	     require("vue-hot-reload-api").rerender("data-v-45ce5b11", module.exports)
 	  }
 	}
 
 /***/ },
-/* 19 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 	/* styles */
-	__webpack_require__(20)
+	__webpack_require__(24)
 
 	var Component = __webpack_require__(7)(
 	  /* script */
-	  __webpack_require__(22),
+	  __webpack_require__(26),
 	  /* template */
-	  __webpack_require__(23),
+	  __webpack_require__(27),
 	  /* scopeId */
-	  "data-v-b274c7fc",
+	  "data-v-7f5a3803",
 	  /* cssModules */
 	  null
 	)
-	Component.options.__file = "I:\\学习与工作\\大创项目\\yoyo\\yoyo-loves-you\\src\\components\\settings.vue"
+	Component.options.__file = "I:\\学习与工作\\大创项目\\yoyo\\yoyo-web\\src\\components\\settings.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] settings.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -1041,9 +1143,9 @@
 	  if (!hotAPI.compatible) return
 	  module.hot.accept()
 	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-b274c7fc", Component.options)
+	    hotAPI.createRecord("data-v-7f5a3803", Component.options)
 	  } else {
-	    hotAPI.reload("data-v-b274c7fc", Component.options)
+	    hotAPI.reload("data-v-7f5a3803", Component.options)
 	  }
 	})()}
 
@@ -1051,23 +1153,23 @@
 
 
 /***/ },
-/* 20 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(21);
+	var content = __webpack_require__(25);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	if(content.locals) module.exports = content.locals;
 	// add the styles to the DOM
-	var update = __webpack_require__(5)("7c7adb90", content, false);
+	var update = __webpack_require__(5)("4b4b3373", content, false);
 	// Hot Module Replacement
 	if(false) {
 	 // When the styles change, update the <style> tags
 	 if(!content.locals) {
-	   module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-b274c7fc\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./settings.vue", function() {
-	     var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-b274c7fc\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./settings.vue");
+	   module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-7f5a3803\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./settings.vue", function() {
+	     var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-7f5a3803\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./settings.vue");
 	     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 	     update(newContent);
 	   });
@@ -1077,7 +1179,7 @@
 	}
 
 /***/ },
-/* 21 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(4)();
@@ -1091,7 +1193,7 @@
 
 
 /***/ },
-/* 22 */
+/* 26 */
 /***/ function(module, exports) {
 
 	//
@@ -1150,7 +1252,7 @@
 
 
 /***/ },
-/* 23 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1214,29 +1316,29 @@
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-	     require("vue-hot-reload-api").rerender("data-v-b274c7fc", module.exports)
+	     require("vue-hot-reload-api").rerender("data-v-7f5a3803", module.exports)
 	  }
 	}
 
 /***/ },
-/* 24 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 	/* styles */
-	__webpack_require__(25)
+	__webpack_require__(29)
 
 	var Component = __webpack_require__(7)(
 	  /* script */
-	  __webpack_require__(27),
+	  __webpack_require__(31),
 	  /* template */
-	  __webpack_require__(28),
+	  __webpack_require__(32),
 	  /* scopeId */
-	  "data-v-7c5c1378",
+	  "data-v-22991952",
 	  /* cssModules */
 	  null
 	)
-	Component.options.__file = "I:\\学习与工作\\大创项目\\yoyo\\yoyo-loves-you\\src\\components\\release.vue"
+	Component.options.__file = "I:\\学习与工作\\大创项目\\yoyo\\yoyo-web\\src\\components\\release.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] release.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -1247,9 +1349,9 @@
 	  if (!hotAPI.compatible) return
 	  module.hot.accept()
 	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-7c5c1378", Component.options)
+	    hotAPI.createRecord("data-v-22991952", Component.options)
 	  } else {
-	    hotAPI.reload("data-v-7c5c1378", Component.options)
+	    hotAPI.reload("data-v-22991952", Component.options)
 	  }
 	})()}
 
@@ -1257,23 +1359,23 @@
 
 
 /***/ },
-/* 25 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(26);
+	var content = __webpack_require__(30);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	if(content.locals) module.exports = content.locals;
 	// add the styles to the DOM
-	var update = __webpack_require__(5)("a3637e5e", content, false);
+	var update = __webpack_require__(5)("0d362699", content, false);
 	// Hot Module Replacement
 	if(false) {
 	 // When the styles change, update the <style> tags
 	 if(!content.locals) {
-	   module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-7c5c1378\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./release.vue", function() {
-	     var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-7c5c1378\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./release.vue");
+	   module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-22991952\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./release.vue", function() {
+	     var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-22991952\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./release.vue");
 	     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 	     update(newContent);
 	   });
@@ -1283,7 +1385,7 @@
 	}
 
 /***/ },
-/* 26 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(4)();
@@ -1297,7 +1399,7 @@
 
 
 /***/ },
-/* 27 */
+/* 31 */
 /***/ function(module, exports) {
 
 	//
@@ -1370,7 +1472,7 @@
 
 
 /***/ },
-/* 28 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1481,29 +1583,29 @@
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-	     require("vue-hot-reload-api").rerender("data-v-7c5c1378", module.exports)
+	     require("vue-hot-reload-api").rerender("data-v-22991952", module.exports)
 	  }
 	}
 
 /***/ },
-/* 29 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 	/* styles */
-	__webpack_require__(30)
+	__webpack_require__(34)
 
 	var Component = __webpack_require__(7)(
 	  /* script */
-	  __webpack_require__(32),
+	  __webpack_require__(36),
 	  /* template */
-	  __webpack_require__(33),
+	  __webpack_require__(37),
 	  /* scopeId */
-	  "data-v-200e4a64",
+	  "data-v-0eba3336",
 	  /* cssModules */
 	  null
 	)
-	Component.options.__file = "I:\\学习与工作\\大创项目\\yoyo\\yoyo-loves-you\\src\\components\\feedback.vue"
+	Component.options.__file = "I:\\学习与工作\\大创项目\\yoyo\\yoyo-web\\src\\components\\feedback.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] feedback.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -1514,9 +1616,9 @@
 	  if (!hotAPI.compatible) return
 	  module.hot.accept()
 	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-200e4a64", Component.options)
+	    hotAPI.createRecord("data-v-0eba3336", Component.options)
 	  } else {
-	    hotAPI.reload("data-v-200e4a64", Component.options)
+	    hotAPI.reload("data-v-0eba3336", Component.options)
 	  }
 	})()}
 
@@ -1524,23 +1626,23 @@
 
 
 /***/ },
-/* 30 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(31);
+	var content = __webpack_require__(35);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	if(content.locals) module.exports = content.locals;
 	// add the styles to the DOM
-	var update = __webpack_require__(5)("454b2a54", content, false);
+	var update = __webpack_require__(5)("d644e8c6", content, false);
 	// Hot Module Replacement
 	if(false) {
 	 // When the styles change, update the <style> tags
 	 if(!content.locals) {
-	   module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-200e4a64\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./feedback.vue", function() {
-	     var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-200e4a64\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./feedback.vue");
+	   module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-0eba3336\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./feedback.vue", function() {
+	     var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?{\"id\":\"data-v-0eba3336\",\"scoped\":true,\"hasInlineConfig\":false}!./../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./feedback.vue");
 	     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 	     update(newContent);
 	   });
@@ -1550,7 +1652,7 @@
 	}
 
 /***/ },
-/* 31 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(4)();
@@ -1558,13 +1660,13 @@
 
 
 	// module
-	exports.push([module.id, "\n.center[data-v-200e4a64]\r\n{\r\n    text-align:center;\n}\r\n", ""]);
+	exports.push([module.id, "\n.center[data-v-0eba3336]\r\n{\r\n    text-align:center;\n}\r\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 32 */
+/* 36 */
 /***/ function(module, exports) {
 
 	//
@@ -1597,7 +1699,7 @@
 
 
 /***/ },
-/* 33 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1622,12 +1724,12 @@
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-	     require("vue-hot-reload-api").rerender("data-v-200e4a64", module.exports)
+	     require("vue-hot-reload-api").rerender("data-v-0eba3336", module.exports)
 	  }
 	}
 
 /***/ },
-/* 34 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1637,7 +1739,28 @@
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-	     require("vue-hot-reload-api").rerender("data-v-0fe6d68e", module.exports)
+	     require("vue-hot-reload-api").rerender("data-v-6d770262", module.exports)
+	  }
+	}
+
+/***/ },
+/* 39 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div', {
+	    staticClass: "container"
+	  }, [_c('h1', {
+	    attrs: {
+	      "id": "app_header"
+	    }
+	  }, [_vm._v("YOYO笔记")]), _vm._v(" "), _c('br'), _vm._v(" "), _c('yoyo-nav'), _vm._v(" "), _c('hr'), _vm._v(" "), _c('yoyo-panels')], 1)
+	},staticRenderFns: []}
+	module.exports.render._withStripped = true
+	if (false) {
+	  module.hot.accept()
+	  if (module.hot.data) {
+	     require("vue-hot-reload-api").rerender("data-v-03fc0471", module.exports)
 	  }
 	}
 
