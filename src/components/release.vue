@@ -26,10 +26,10 @@
                 <br><br><br>
                 <div class="row">
                     <div class="col-sm-6">
-                        <button type="submit" id="class_submit" class="btn-success form-control">发布</button>
+                        <button :disabled="uploading" type="submit" id="class_submit" class="btn btn-default form-control">发布</button>
                     </div>
                     <div class="col-sm-6">
-                        <button type="reset" class="btn-danger form-control">重置</button>
+                        <button type="reset" class="btn btn-danger form-control">重置</button>
                     </div>
                 </div>
             </form>
@@ -39,26 +39,37 @@
 <script>
     module.exports =
         {
+            data:function()
+            {
+                return{
+                    uploading:false
+                }
+            },
             methods:
                 {
                     submit:function(e)
                     {
+                        this.uploading=true;
                         window.luoc.yoyo.release(document.getElementById('class_form'));
                     }
                 },
             mounted:function()
             {
+                let self=this;
+
                 document.body.addEventListener('yoyo:release:args_check_failed',function(e)
                 {
                     console.log(e);
                 });
                 document.body.addEventListener('yoyo:release:error',function(e)
                 {
+                    self.uploading=false;
                     console.log(e);
                     alert('发布课程失败');
                 });
                 document.body.addEventListener('yoyo:release:ok',function(e)
                 {
+                    self.uploading=false;
                     console.log(e);
                     alert('发布课程成功');
                     document.getElementById('class_form').reset();

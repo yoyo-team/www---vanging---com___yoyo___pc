@@ -3132,7 +3132,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 	// exports
 
@@ -3183,20 +3183,30 @@
 	//
 
 	module.exports = {
+	    data: function data() {
+	        return {
+	            uploading: false
+	        };
+	    },
 	    methods: {
 	        submit: function submit(e) {
+	            this.uploading = true;
 	            window.luoc.yoyo.release(document.getElementById('class_form'));
 	        }
 	    },
 	    mounted: function mounted() {
+	        var self = this;
+
 	        document.body.addEventListener('yoyo:release:args_check_failed', function (e) {
 	            console.log(e);
 	        });
 	        document.body.addEventListener('yoyo:release:error', function (e) {
+	            self.uploading = false;
 	            console.log(e);
 	            alert('发布课程失败');
 	        });
 	        document.body.addEventListener('yoyo:release:ok', function (e) {
+	            self.uploading = false;
 	            console.log(e);
 	            alert('发布课程成功');
 	            document.getElementById('class_form').reset();
@@ -3227,7 +3237,18 @@
 	        _vm.submit($event)
 	      }
 	    }
-	  }, [_vm._m(0), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(3), _vm._v(" "), _c('br'), _c('br'), _c('br'), _vm._v(" "), _vm._m(4)])])])
+	  }, [_vm._m(0), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(3), _vm._v(" "), _c('br'), _c('br'), _c('br'), _vm._v(" "), _c('div', {
+	    staticClass: "row"
+	  }, [_c('div', {
+	    staticClass: "col-sm-6"
+	  }, [_c('button', {
+	    staticClass: "btn btn-default form-control",
+	    attrs: {
+	      "disabled": _vm.uploading,
+	      "type": "submit",
+	      "id": "class_submit"
+	    }
+	  }, [_vm._v("发布")])]), _vm._v(" "), _vm._m(4)])])])])
 	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
 	  return _c('div', {
 	    staticClass: "form-group"
@@ -3294,23 +3315,13 @@
 	  })])
 	},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
 	  return _c('div', {
-	    staticClass: "row"
-	  }, [_c('div', {
 	    staticClass: "col-sm-6"
 	  }, [_c('button', {
-	    staticClass: "btn-success form-control",
-	    attrs: {
-	      "type": "submit",
-	      "id": "class_submit"
-	    }
-	  }, [_vm._v("发布")])]), _vm._v(" "), _c('div', {
-	    staticClass: "col-sm-6"
-	  }, [_c('button', {
-	    staticClass: "btn-danger form-control",
+	    staticClass: "btn btn-danger form-control",
 	    attrs: {
 	      "type": "reset"
 	    }
-	  }, [_vm._v("重置")])])])
+	  }, [_vm._v("重置")])])
 	}]}
 	module.exports.render._withStripped = true
 	if (false) {
