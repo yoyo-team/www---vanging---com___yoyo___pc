@@ -1,14 +1,9 @@
 <template>
     <ul class="nav nav-pills" id="app_nav">
         <li role="presentation" class="app-nav-item"
-            :class="{ active : nav == '#notes' }" data-item_name="#profile_notes"
+            :class="{ active : nav == '#statistics' }" data-item_name="#profile_statistics"
             id="nav_notes">
-            <a href="#notes">我的笔记</a>
-        </li>
-        <li role="presentation" class="app-nav-item"
-            :class="{ active : nav == '#settings' }" data-item_name="#profile_settings"
-            id="nav_settings">
-            <a href="#settings">个人设置</a>
+            <a href="#statistics">热点统计</a>
         </li>
         <li role="presentation" class="app-nav-item"
             :class="{ active : nav == '#release' }" data-item_name="#profile_release"
@@ -32,11 +27,11 @@
             },
             mounted:function()
             {
-                var self=this;
+                let self=this;
                 window.addEventListener('hashchange',function(e)
                 {
-                    var hash=location.hash;
-                    if(['#notes','#settings','#release','#feedback'].indexOf(hash)!==-1)
+                    let hash=location.hash;
+                    if(['#statistics','#release','#feedback'].indexOf(hash)!==-1)
                     {
                         self.nav=hash;
                     }

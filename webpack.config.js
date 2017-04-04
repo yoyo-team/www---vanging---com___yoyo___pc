@@ -1,5 +1,5 @@
-var webpack=require('webpack');
-var path=require('path');
+let webpack=require('webpack');
+let path=require('path');
 
 module.exports=
     {
@@ -16,7 +16,28 @@ module.exports=
                         {
                             test: /\.vue$/,
                             loader: 'vue-loader'
+                        },
+                        {
+                            test:/\.js$/,
+                            loader:'babel-loader',
+                            exclude:'/node_modules/'
                         }
                     ]
+            },
+        babel:
+            {
+                presets:['latest']
+                // , plugins:
+                //     [
+                //         [
+                //             'transform-runtime',
+                //             {
+                //                 polyfill: true,
+                //                 regenerator: true,
+                //                 helpers: true,
+                //                 moduleName:'babel-runtime'
+                //             }
+                //         ]
+                // ]
             }
     };

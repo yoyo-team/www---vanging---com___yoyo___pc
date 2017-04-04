@@ -1,7 +1,6 @@
 <template>
     <div>
-        <notes v-if=" nav == '#notes' "></notes>
-        <settings v-if=" nav == '#settings' "></settings>
+        <statistics v-if=" nav == '#statistics' "></statistics>
         <release v-if=" nav == '#release' "></release>
         <feedback v-if=" nav == '#feedback' "></feedback>
     </div>
@@ -21,7 +20,7 @@
                 window.addEventListener('hashchange',function(e)
                 {
                     var hash=location.hash;
-                    if(['#notes','#settings','#release','#feedback'].indexOf(hash)!==-1)
+                    if(['#statistics','#release','#feedback'].indexOf(hash)!==-1)
                     {
                         self.nav=hash;
                     }
@@ -29,8 +28,7 @@
             },
             components:
                 {
-                    notes:require('./notes.vue'),
-                    settings:require('./settings.vue'),
+                    statistics:require('./statistics.vue'),
                     release:require('./release.vue'),
                     feedback:require('./feedback.vue')
                 }

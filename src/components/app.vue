@@ -5,6 +5,7 @@
         <yoyo-nav></yoyo-nav>
         <hr>
         <yoyo-panels></yoyo-panels>
+        <class-hot-point-modal></class-hot-point-modal>
     </div>
 </template>
 <script>
@@ -16,10 +17,14 @@
             components:
                 {
                     'yoyo-nav':require('./nav.vue'),
-                    'yoyo-panels':require('./panels.vue')
+                    'yoyo-panels':require('./panels.vue'),
+                    'class-hot-point-modal':require('../modals/class_hot_point.vue')
                 }
         }
 </script>
 <style scoped>
-
+    *
+    {
+        font-family:微软雅黑,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
 </style>
