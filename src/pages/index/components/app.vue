@@ -2,23 +2,29 @@
     <div  class="container">
         <h1 id="app_header">YOYO笔记</h1>
         <br>
-        <yoyo-nav></yoyo-nav>
+        <_nav></_nav>
         <hr>
-        <yoyo-panels></yoyo-panels>
-        <class-hot-point-modal></class-hot-point-modal>
+        <panels></panels>
+        <class_hot_point></class_hot_point>
     </div>
 </template>
 <script>
-    module.exports =
+
+    import _nav from './nav.vue';
+    import panels from './panels.vue';
+    import class_hot_point from './modals/class_hot_point.vue';
+
+    export default
         {
-            data: function () {
+            data: function()
+            {
                 return {};
             },
             components:
                 {
-                    'yoyo-nav':require('./nav.vue'),
-                    'yoyo-panels':require('./panels.vue'),
-                    'class-hot-point-modal':require('../modals/class_hot_point.vue')
+                    _nav,
+                    panels,
+                    class_hot_point,
                 }
         }
 </script>
