@@ -28,9 +28,9 @@
             },
             components:
                 {
-                    statistics:require('./statistics.vue'),
-                    release:require('./release.vue'),
-                    feedback:require('./feedback.vue')
+                    statistics:require('./panels/statistics.vue'),
+                    release:require('./panels/release.vue'),
+                    feedback:require('./panels/feedback.vue')
                 }
         }
 </script>
