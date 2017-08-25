@@ -19,10 +19,10 @@
                 </thead>
                 <tbody id="notes">
                 <tr id="note_template" v-for="class_item in classes">
-                    <td>{{class_item.name}}</td>
-                    <td>{{class_item.location}}</td>
-                    <td>{{class_item.releaser}}</td>
-                    <td><button class="btn btn-primary" @click="show_class_hot_point(class_item.cid)">查看</button></td>
+                    <td>{{class_item.class_name}}</td>
+                    <td>{{class_item.class_location}}</td>
+                    <td>{{class_item.class_releaser}}</td>
+                    <td><button class="btn btn-primary" @click="show_class_hot_point(class_item.class_id)">查看</button></td>
                 </tr>
                 </tbody>
                 <tfoot></tfoot>
@@ -31,6 +31,9 @@
     </div>
 </template>
 <script>
+
+    const yoyoSDK = window['www---vanging---com___yoyo___sdk'];
+
     module.exports =
         {
             data:function()
@@ -40,60 +43,36 @@
                     keyword:'吉大'
                 };
             },
-            mounted:function()
-            {
-                let self=this;
-
-                // get class
-                document.body.addEventListener('yoyo:get_class:ok',function(e)
-                {
-                    Vue.set
-                    (
-                        self.classes[e.message.cid],
-                        'source',
-                        e.message
-                    );
-                });
-                document.body.addEventListener('yoyo:get_class:error',function(e)
-                {
-                    console.log('课程加载失败');
-                    console.log(e.message);
-                });
-
-                // query class
-                document.body.addEventListener('yoyo:query_class:ok',function(e)
-                {
-                    console.log(e.message);
-                    while(self.classes.length>0)
-                    {
-                        self.classes.pop();
-                    }
-                    e.message.forEach(function(e)
-                    {
-                        self.classes.push(e);
-                    });
-                });
-                document.body.addEventListener('yoyo:query_class:error',function(e)
-                {
-                    console.log(e.message);
-                    alert('查询失败，')
-                });
-            },
             methods:
                 {
                     query:function(e)
                     {
-                        window.luoc.yoyo.query_class
-                        (
+                        const self = this;
+                        yoyoSDK.queryClass(this.keyword)
+                            .then(function(result)
                             {
-                                key:this.keyword
-                            }
-                        );
+                                result = JSON.parse(result);
+                                if(result.status === 'ok')
+                                {
+                                    while(self.classes.length>0)
+                                    {
+                                        self.classes.pop();
+                                    }
+                                    result.message.forEach(function(e)
+                                    {
+                                        self.classes.push(e);
+                                    });
+                                }
+                            }, function(err)
+                            {
+                                console.log(err);
+                                alert('查询失败');
+                            })
                     },
                     show_class_hot_point:function(cid)
                     {
                         console.log(cid);
-                        var event=new Event('yoyo:show_class_hot_point');
+                        const event=new Event('yoyo:show_class_hot_point');
                         event.message=cid;
                         document.body.dispatchEvent(event);
                     }

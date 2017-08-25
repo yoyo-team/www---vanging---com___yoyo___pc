@@ -14,12 +14,12 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="item in hot_points">
-                            <td v-if="class_content[item.index].type==='img'">
-                                <img class="hot-point-image" :src="class_content[item.index].url" alt="">
+                        <tr v-for="(item, index) in hot_points">
+                            <td v-if="class_content[index].type==='img'">
+                                <img class="hot-point-image" :src=" `//www.vanging.com/yoyo/classes/${class_id}/` + class_content[index].content" alt="">
                             </td>
-                            <td v-if="class_content[item.index].type==='text'">{{class_content[item.index].content}}</td>
-                            <td>{{item.value}}</td>
+                            <td v-if="class_content[index].type==='text'">{{class_content[index].content}}</td>
+                            <td>{{ hot_points[index] }}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -32,76 +32,153 @@
     </div>
 </template>
 <script>
+
+    const yoyoSDK = window['www---vanging---com___yoyo___sdk'];
+
     export default
         {
             data: function () {
                 return {
-                    cid:'',
+                    class_id:'',
+
+                    // ordered data
                     class_content:[],
-                    hot_points:[]
+                    hot_points:[],
+
+                    // not ordered data
+                    raw_class_content:[],
+                    raw_hot_points:[],
                 };
             },
-            mounted:function()
+            methods:
+                {
+                    error: function(err)
+                    {
+                        console.log(err);
+                        alert('获取课程热点统计数据失败');
+                    },
+                    update_class_content: function(data)
+                    {
+                        const self = this;
+                        while(this.raw_class_content.length > 0)
+                        {
+                            this.raw_class_content.pop();
+                        }
+                        data.forEach(function(e)
+                        {
+                            self.raw_class_content.push(e);
+                        });
+                    },
+                    update_hot_points: function(data)
+                    {
+                        while(this.raw_hot_points.length > 0)
+                        {
+                            this.raw_hot_points.pop();
+                        }
+                        for(let i = 0 ; i < this.raw_class_content.length ; i ++)
+                        {
+                            const item = data[`${i}`] || 0;
+                            this.raw_hot_points.push(item);
+                        }
+                    },
+                    sort: function()
+                    {
+                        let max = 0;
+
+                        // get max value
+                        this.raw_hot_points.forEach(function(e)
+                        {
+                            if(e > max)
+                            {
+                                max = e;
+                            }
+                        });
+
+                        // clear
+                        while(this.class_content.length > 0)
+                        {
+                            this.class_content.pop();
+                        }
+                        while(this.hot_points.length > 0)
+                        {
+                            this.hot_points.pop();
+                        }
+
+                        while(max >= 0)
+                        {
+                            const self = this;
+                            this.raw_hot_points.forEach(function(e, i)
+                            {
+                                if(e === max)
+                                {
+                                    self.class_content.push(self.raw_class_content[i]);
+                                    self.hot_points.push(e);
+                                }
+                            });
+                            max -- ;
+                        }
+                    }
+                },
+            mounted: function()
             {
-                let self=this;
+                const self=this;
 
                 document.body.addEventListener('yoyo:show_class_hot_point',function(e)
                 {
                     $("#class_hot_point_modal").modal('show');
-                    self.cid=e.message;
-                    window.luoc.yoyo.get_class({cid:e.message});
-                });
+                    self.class_id=e.message;
 
-                document.body.addEventListener('yoyo:get_class:ok',function(e)
-                {
-                    console.log(e.message);
-                    self.class_content=[];
-                    e.message.segments.forEach(function(e)
+                    function sanitize(str)
                     {
-                        if(e.type==='img')
+                        const valid = /[\u0020-\u007e\u4e00-\u9fa5]/;
+                        const invalid = /[]/;
+                        let result = '';
+                        str.split('').forEach(function(c)
                         {
-                            e.url=`//luoc.co/yoyo/classes/${self.cid}/${e.url}`;
-                        }
-                        self.class_content.push(e);
-                    });
-                    window.luoc.yoyo.get_statistics({cid:self.cid});
-                });
-
-                document.body.addEventListener('yoyo:get_statistics:ok',function(e)
-                {
-                    self.hot_points=[];
-                    let max=0;
-
-                    // get max value
-                    for(let key in e.message)
-                    {
-                        if(e.message[key]>max)
-                        {
-                            max=e.message[key];
-                        }
-                    }
-
-                    // push into array in the order of value
-                    while(max>0)
-                    {
-                        for(let key in e.message)
-                        {
-                            if(e.message[key]==max)
+                            if(valid.test(c))
                             {
-                                self.hot_points.push
-                                (
-                                    {
-                                        index:key,
-                                        value:e.message[key]
-                                    }
-                                );
+                                result += c;
                             }
-                        }
-                        max--;
+                        });
+                        return result;
                     }
 
-                    console.log(e.message);
-                })
+                    step_1();
+
+                    // get class content
+                    function step_1()
+                    {
+                        yoyoSDK.getClassContent(self.class_id)
+                            .then(function(result)
+                            {
+                                console.log(result);
+                                self.update_class_content(result);
+                                step_2();
+                            }, self.error);
+                    }
+
+                    // get statistics
+                    function step_2()
+                    {
+                        yoyoSDK.getStatistics(self.class_id)
+                            .then(function(result)
+                            {
+                                result = JSON.parse(result);
+                                if(result.status === "ok")
+                                {
+                                    self.update_hot_points(result.message);
+
+                                    // sort
+                                    self.sort();
+                                }
+                                else
+                                {
+                                    self.error(result);
+                                }
+                            }, self.error);
+                    }
+
+                });
             }
         }
 </script>
