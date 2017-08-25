@@ -14,7 +14,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="(item, index) in hot_points">
+                        <tr v-for="(item, index) in hot_points" v-if=" class_content[index].type === 'text' ? true : class_content[index].content.split('.').pop().match(/(jpg|jpeg|png|gif|bmp)/) ">
                             <td v-if="class_content[index].type==='img'">
                                 <img class="hot-point-image" :src=" `//www.vanging.com/yoyo/classes/${class_id}/` + class_content[index].content" alt="">
                             </td>
@@ -126,22 +126,8 @@
                 document.body.addEventListener('yoyo:show_class_hot_point',function(e)
                 {
                     $("#class_hot_point_modal").modal('show');
-                    self.class_id=e.message;
 
-                    function sanitize(str)
-                    {
-                        const valid = /[\u0020-\u007e\u4e00-\u9fa5]/;
-                        const invalid = /[]/;
-                        let result = '';
-                        str.split('').forEach(function(c)
-                        {
-                            if(valid.test(c))
-                            {
-                                result += c;
-                            }
-                        });
-                        return result;
-                    }
+                    self.class_id=e.message;
 
                     step_1();
 
